@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% load static %}
+{% block title %} Employes {% endblock title %}
+{% block button %}
+<li>
+  <a
+    href="{% url 'add' %}"
+    class="nav-link btn btn-success px-4 text-white"
+    >Add</a
+  >
+</li>
+       
+{% endblock button %}
+{% block body_containt %} 
+ 
+<section class="py-4" style="height: 100vh;">
+    <div class="container">
+        <h3 class="text-center">Employee Information Table</h3>
+        <hr/></br>
+        {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="outline: none;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    {{message}}
+  </div>
+ {% endfor %}
+{% endif %}
+        <div class="table-responsive-ms">
+            <table class="table table-bordered table-hover mx-auto">
+                <thead>
+                <tr>
+                    <th>EMP_ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Title</th>
+                    <th>Salary</th>
+                    <th>Branch</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                 {% for data in data %}   
+                <tr>
+                    <td>{{data.id}}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.title}}</td>
+                    <td>{{data.salary}}</td>
+                    <td>{{data.branch}}</td>
+                    <td>
+                        <a href="{% url 'edit' %}" class="btn btn-info px-4">Edit</a>
+                        <a href="#mod" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<div class="modal" id="mod">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-bg-primary">Confirmation
+                <span   class="btn btn-transparent text-white" data-bs-dismiss="modal">X</span>
+            </div>
+            <div class="modal-body  text-start">
+                Are You Sure to Delete ?
+            </div>
+            <div class="modal-footer">
+                <a href="" type="button" class="btn btn-success">Confirm</a>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    $('.alert').alert()
+  })
+</script>
+{% endblock body_containt %}

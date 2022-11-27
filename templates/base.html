@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand navbar-light bg-white shadow sticky-top">
+      <div class="container">
+        <a href="index.html" class="navbar-brand"
+          ><img
+            src="{% static 'img/project.jpg' %}"
+            alt="logo"
+            style="width: 100px"
+        /></a>
+        <h5 class="ms-auto">MongoDB Integration with Python</h5>
+        <ul class="navbar-nav ms-auto">
+          <li>
+            <a
+              href="{% url 'index' %}"
+              class="nav-link btn btn-primary px-4 text-white"
+              >Home</a
+            >
+          </li>
+          &nbsp {% block button %} {% endblock button %}
+        </ul>
+      </div>
+    </nav>
+
+    {% block body_containt %} {% endblock body_containt %}
+
+    <footer class="bg-secondary">
+      <div class="container text-center">
+        <p class="py-2 text-white">
+          <b>Developed by:</b> Team member @ Nurnabi, Mehrab, Riad
+        </p>
+      </div>
+    </footer>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  </body>
+</html>
