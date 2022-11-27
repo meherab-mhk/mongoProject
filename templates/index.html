@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>home page</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>employee management system</h1>
-
-    <h2>
-         Name : {{data.0.name}}
-    </h2>
-    <h2>
-        email : {{data.0.email}}
-   </h2>
-   <h2>
-    title : {{data.0.title}}
-   </h2>
-   <h2>
-    salary : {{data.0.salary}}
-   </h2>
-    <h2>
-        branch : {{data.0.branch}}
-    </h2>
-</body>
+    {% for data in data %}
+    <div>
+      <h2>Name : {{data.name}}</h2>
+      <h2>email : {{data.email}}</h2>
+      <h2>title : {{data.title}}</h2>
+      <h2>salary : {{data.salary}}</h2>
+      <h2>branch : {{data.branch}}</h2>
+    </div>
+    {% endfor %}
+  </body>
 </html>
