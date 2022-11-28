@@ -35,5 +35,29 @@ def Add(request):
 
     return render(request,'insert.html')
 
-def Edit(request):
-    return render(request,'update.html')
+def Edit(request,id):
+    emp = Employee.objects.get(pk=id)
+    context = {
+        'emp': emp
+    }
+    return render(request,'update.html',context)
+
+def Update(request,id):
+    emp = Employee.objects.get(pk=id)
+    emp.name = request.GET['name']
+    emp.email = request.GET['email']
+    emp.title = request.GET['title']
+    emp.salary = request.GET['salary']
+    emp.branch = request.GET['branch']
+
+    emp.save()
+    messages.success(request,"Employee's information Has been Updated!")
+    return redirect('view')
+
+
+def Deleting(request,id):
+    emp = Employee.objects.get(pk=id)
+    emp.delete()
+    messages.success(request,"Employee Has been deleted!")
+    return redirect('view')
+    

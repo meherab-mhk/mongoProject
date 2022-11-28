@@ -49,8 +49,8 @@
                     <td>{{data.salary}}</td>
                     <td>{{data.branch}}</td>
                     <td>
-                        <a href="{% url 'edit' %}" class="btn btn-info px-4">Edit</a>
-                        <a href="#mod" class="btn btn-danger" data-bs-toggle="modal">Delete</a>
+                        <a href="/modify_employee/{{ data.id }}" class="btn btn-info px-4">Edit</a>
+                        <a onclick="isConfirm()" href="/delete_emp/{{ data.id }}"  class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}

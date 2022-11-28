@@ -1,68 +1,94 @@
-{% extends 'base.html' %}
-{% block title %}
-new employe
-{% endblock title %}
-{% block button %}
+{% extends 'base.html' %} {% block title %} new employe {% endblock title %}
+ {%block button %}
 <li>
   <a href="{% url 'view' %}" class="nav-link btn btn-success px-4 text-white"
     >View</a
   >
 </li>
-{% endblock button %}
-{% block body_containt %}
-<section class="py-4" style="height: 100vh;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h4>Update Employee</h4>
-                    </div>
-                    <div class="card-body">
-
-                        <form action="" method="">
-
-                            <div class="row mb-4">
-                                <label class="col-md-3">Name:</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" type="text"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-md-3">E-mail:</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" type="email"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-md-3">Title:</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" type="text"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-md-3">Salary:</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" type="text"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-md-3">Branch:</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" type="text"/>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-md-3"></label>
-                                <div class="col-md-9">
-                                    <button value="submit" type="update" class="btn btn-success px-5">Update</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+{% endblock button %} {% block body_containt %}
+<section class="py-4" style="height: 100vh">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header text-center">
+            <h4>Update Employee</h4>
+          </div>
+          <div class="card-body">
+            <form action="/update/{{emp.id}}" method="">
+              {% csrf_token %}
+              <div class="row mb-4">
+                <label class="col-md-3">Name:</label>
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="name"
+                    value="{{emp.name}}"
+                  />
                 </div>
-            </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-md-3">E-mail:</label>
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    type="email"
+                    name="email"
+                    value="{{emp.email}}"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-md-3">Title:</label>
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="title"
+                    value="{{emp.title}}"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-md-3">Salary:</label>
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="salary"
+                    value="{{emp.salary}}"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-md-3">Branch:</label>
+                <div class="col-md-9">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="branch"
+                    value="{{emp.branch}}"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-md-3"></label>
+                <div class="col-md-9">
+                  <button
+                    value="submit"
+                    type="update"
+                    class="btn btn-success px-5"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 {% endblock body_containt %}
